@@ -1,0 +1,372 @@
+/* ============================================================
+   styleku.css — Praktikum 4 CSS (burung.html)
+   Seluruh tampilan hanya dari CSS; HTML tidak diubah selain
+   menautkan berkas ini.
+   Bagian: 1 Dasar · 2 Header · 3 Menu · 4 Foto · 5 Isi
+           6 Profil & Budidaya · 7 Koleksi · 8 Promo · 9 Responsif
+   ============================================================ */
+
+/* ---------- 1. Dasar ---------- */
+:root {
+    --krem: #f5f5dc;
+    --krem-tua: #efe6bd;
+    --cokelat: #deb887;
+    --cokelat-tua: #7a4a12;
+    --emas: #ffd700;
+    --emas-tua: #c9a400;
+    --biru: #1a2fd6;
+    --teks: #2b2417;
+    --kartu: #fffdf3;
+    --garis: #e4d9b0;
+    --bayangan: 0 2px 4px rgba(60, 40, 10, .12), 0 8px 20px rgba(60, 40, 10, .10);
+}
+
+* { box-sizing: border-box; }
+
+html {
+    background: var(--krem);
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 18px 16px 40px;
+    font-family: Verdana, Geneva, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--teks);
+}
+
+a[href] { color: var(--biru); }
+a[href]:hover { color: #0a1590; }
+a[href]:focus-visible { outline: 3px solid var(--emas-tua); outline-offset: 2px; border-radius: 4px; }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- 2. Header: judul + kutipan ---------- */
+#header {
+    background: linear-gradient(180deg, #e6c694 0%, var(--cokelat) 100%);
+    border: 1px solid #c9a06a;
+    border-radius: 16px;
+    padding: 22px 24px 24px;
+    box-shadow: var(--bayangan);
+    text-align: center;
+}
+
+#header h1 {
+    margin: 0 0 16px;
+    font-size: clamp(1.5rem, 4.2vw, 2.1rem);
+    line-height: 1.25;
+    color: var(--biru);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .55);
+}
+
+#header blockquote {
+    margin: 0 auto;
+    max-width: 720px;
+    padding: 14px 20px;
+    background: var(--emas);
+    border: 2px solid var(--emas-tua);
+    border-radius: 10px;
+    font-size: .95rem;
+    font-style: italic;
+    color: #2a2000;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+#soekarno {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: .02em;
+}
+
+/* ---------- 3. Menu (daftar tautan tepat setelah header) ---------- */
+#header + div { margin: 18px 0 6px; }
+
+#header + div ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#header + div a {
+    display: inline-block;
+    padding: 6px 18px;
+    border: 2px solid var(--cokelat);
+    border-radius: 999px;
+    background: var(--kartu);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color .2s, color .2s, transform .2s;
+}
+
+#header + div a:hover {
+    background: var(--biru);
+    border-color: var(--biru);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ---------- 4. Foto utama (di tengah) ---------- */
+.gambar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 22px 0;
+}
+
+.gambar img {
+    width: auto;
+    height: 230px;
+    border: 4px solid #fff;
+    border-radius: 12px;
+    box-shadow: var(--bayangan);
+    object-fit: cover;
+    transition: transform .25s;
+}
+
+.gambar img:hover { transform: rotate(-1.2deg) scale(1.03); }
+
+/* ---------- 5. Isi: paragraf pembuka ---------- */
+.isi p {
+    margin: 0 0 14px;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* huruf pertama besar berwarna biru, seperti pada gambar target */
+.isi p:first-of-type::first-letter {
+    float: left;
+    margin: 4px 8px 0 0;
+    font-size: 3.6em;
+    line-height: .82;
+    font-weight: 700;
+    color: var(--biru);
+}
+
+/* teks tebal "Perkutut Jawa" disorot (highlight) */
+.jawa {
+    padding: 0 3px;
+    font-weight: 700;
+    background: linear-gradient(transparent 55%, #ffe27a 55%);
+}
+
+/* ---------- 6. Profil & Cara Berternak ---------- */
+#profil,
+#beternak {
+    margin: 24px 0;
+    padding: 18px 24px 20px;
+    background: var(--kartu);
+    border: 1px solid var(--garis);
+    border-radius: 14px;
+    box-shadow: var(--bayangan);
+    scroll-margin-top: 14px;
+}
+
+#profil h3,
+#beternak h3 {
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--cokelat);
+    color: var(--cokelat-tua);
+    font-size: 1.15rem;
+}
+
+/* daftar profil: penanda bulat buatan sendiri */
+#profil ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#profil li {
+    position: relative;
+    margin: 0 0 12px;
+    padding-left: 26px;
+}
+
+#profil li::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: .65em;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #b8863b;
+    border-radius: 50%;
+    background: var(--cokelat);
+}
+
+/* langkah budidaya: nomor bulat otomatis (counter) */
+#beternak ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: langkah;
+}
+
+#beternak ol > li {
+    position: relative;
+    margin: 0 0 20px;
+    padding-left: 54px;
+    counter-increment: langkah;
+}
+
+#beternak ol > li::before {
+    content: counter(langkah);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--biru);
+    color: #fff;
+    font-weight: 700;
+}
+
+#beternak h4 {
+    margin: 0 0 4px;
+    color: var(--biru);
+    font-size: 1.02rem;
+}
+
+#beternak p { margin: 0; text-align: justify; }
+
+/* ---------- 7. Koleksi foto (kisi 4 kolom) ---------- */
+.koleksi {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 26px 0;
+}
+
+.koleksi img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    box-shadow: var(--bayangan);
+    object-fit: cover;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.koleksi img:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 26px rgba(60, 40, 10, .25);
+}
+
+/* ---------- 8. Promo ---------- */
+.promo {
+    margin: 28px 0 0;
+    padding: 22px 24px 26px;
+    background: linear-gradient(180deg, #fff6c9 0%, #ffe680 100%);
+    border: 2px dashed var(--emas-tua);
+    border-radius: 18px;
+    text-align: center;
+    scroll-margin-top: 14px;
+}
+
+.promo h2 {
+    margin: 0 0 12px;
+    color: #8a1c1c;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.promo h3 {
+    margin: 0 0 14px;
+    color: #3b2a0b;
+    font-size: 1.02rem;
+    line-height: 1.9;
+}
+
+/* harga coret dan harga promo */
+.promo del { color: #b00020; opacity: .85; white-space: nowrap; }
+
+.promo strong {
+    padding: 0 8px;
+    border-radius: 8px;
+    background: #fff;
+    color: #0a7d36;
+    font-size: 1.45em;
+}
+
+/* nomor WhatsApp seperti tombol */
+#Wa {
+    display: inline-block;
+    padding: 2px 14px;
+    border-radius: 999px;
+    background: #25d366;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: .02em;
+    box-shadow: 0 2px 6px rgba(37, 211, 102, .45);
+}
+
+.promo h4 {
+    margin: 4px 0 12px;
+    color: var(--cokelat-tua);
+}
+
+.promo ol {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* a[href]: HTML memakai <a name="..."/> yang tidak ditutup, sehingga browser membuat
+   tautan kosong (tanpa href) di dalam daftar; hanya tautan bertujuan yang dijadikan tombol */
+.promo ol a[href] {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+    transition: transform .2s, filter .2s;
+}
+
+.promo ol a[href]:hover { color: #fff; transform: translateY(-2px); filter: brightness(1.1); }
+
+/* nth-of-type (bukan nth-child): hanya menghitung <li>, bukan tautan kosong yang diselipkan browser */
+.promo li:nth-of-type(1) a[href] { background: #03ac0e; }   /* Tokopedia */
+.promo li:nth-of-type(2) a[href] { background: #e31e52; }   /* Bukalapak */
+.promo li:nth-of-type(3) a[href] { background: #ee4d2d; }   /* Shopee */
+
+/* ---------- 9. Responsif (HP) & preferensi pengguna ---------- */
+@media (max-width: 700px) {
+    body { padding: 12px 12px 32px; font-size: 14px; }
+    #header { padding: 16px 14px 18px; }
+    .gambar img { height: 170px; }
+    .koleksi { grid-template-columns: repeat(2, 1fr); }
+    #profil, #beternak, .promo { padding-left: 16px; padding-right: 16px; }
+    #beternak ol > li { padding-left: 48px; }
+}
+
+@media (max-width: 420px) {
+    .gambar img { height: 140px; }
+    .isi p, #beternak p { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+}
